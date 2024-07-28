@@ -31,21 +31,21 @@ namespace backend.Controllers
         //    return wishOfName;
         //}
 
-        //[HttpPost("addWish")]
-        //public WishModel addWish(string name, string wish, int mosha)
-        //{
-        //    var createdWish = new WishModel
-        //    {
-        //        Name = name,
-        //        Wish = wish,
-        //        Mosha = mosha,
-        //        Viti = DateTime.Now,
-        //    };
+        [HttpPost("addWish")]
+        public WishModel addWish(string name, string wish, int mosha)
+        {
+            var createdWish = new WishModel
+            {
+                Name = name,
+                Wish = wish,
+                Mosha = mosha,
+                Viti = DateTime.Now,
+            };
 
-        //    _wishDB.Add(createdWish);
+            _wishDB.Add(createdWish);
 
-        //    return createdWish;
-        //}
+            return createdWish;
+        }
 
         [HttpGet("GetAllWishes")]
         public async Task<IActionResult> GetWish()
