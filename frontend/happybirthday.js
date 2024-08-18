@@ -30,23 +30,37 @@ function rotateDiv() {
 async function changetext() {
     const input = document.querySelector("#inputwish");
     // console.log(input);
-    await creatWish("arseo", input.value, 15);
+    await createWish("arseo", input.value, 15);
     
     document.getElementById("text").innerHTML = "Hope your wish comes true";
 }
 
 
-async function creatWish(name, wish, mosha) {
-    const url = `https://localhost:7294/api/Wish/addWish?name=${name}&wish=${wish}&mosha=${mosha}`;
+async function createWish(name, wish, mosha) {
+    const url = `https://localhost:7294/api/Wish/MakeAWish`;
+    const wishData = {
+        Name: name,
+        Wish: wish,
+        Mosha: mosha,
+        Viti: new Date().getFullYear()
+    };
+
     try {
-      const response = await fetch(url, { method: "POST" });
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-  
-      const json = await response.json();
-      console.log(json);
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(wishData)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        console.log(json);
     } catch (error) {
-      console.error(error.message);
+        console.error(error.message);
     }
 }
