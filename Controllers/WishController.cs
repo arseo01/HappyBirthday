@@ -24,29 +24,6 @@ namespace backend.Controllers
             _config = config;
         }
 
-        //[HttpGet("GetWishByName")]
-        //public IEnumerable<WishModel> WishByName(string name)
-        //{
-        //    var wishOfName = _wishDB.Where(x => x.Name == name).ToList();
-        //    return wishOfName;
-        //}
-
-        //[HttpPost("addWish")]
-        //public WishModel addWish(string name, string wish, int mosha)
-        //{
-        //    var createdWish = new WishModel
-        //    {
-        //        Name = name,
-        //        Wish = wish,
-        //        Mosha = mosha,
-        //        Viti = DateTime.Now,
-        //    };
-
-        //    _wishDB.Add(createdWish);
-
-        //    return createdWish;
-        //}
-
         [HttpGet("GetAllWishes")]
         public async Task<IActionResult> GetWish()
         {
@@ -71,41 +48,5 @@ namespace backend.Controllers
             await connection.ExecuteAsync("INSERT INTO Wish (Name, Wish, Mosha, Viti) VALUES (@Name, @Wish, @Mosha, @Viti)", wish);
             return Ok(wish);
         }
-
-
-
-        // api qe u krijuat automatikisht
-
-        //GET: api/<WishController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //GET api/<WishController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        //POST api/<WishController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        // PUT api/<WishController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        // DELETE api/<WishController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }
