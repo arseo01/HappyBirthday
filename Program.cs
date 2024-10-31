@@ -12,7 +12,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "localhostDevelopment",
                       policy =>
                       {
-                          policy.WithOrigins("http://127.0.0.1:5500", "https://arseo01.github.io", "http://127.0.0.1:5501", "https://celebratebirthdays.github.io")
+                          policy.WithOrigins("http://127.0.0.1:5500", "https://arseo01.github.io", "http://127.0.0.1:5501", "https://celebratebirthdays.github.io/happybd/")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                       });
