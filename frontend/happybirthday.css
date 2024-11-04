@@ -10,13 +10,14 @@ body {
 #text_1, #clickme {
     transform: scale(1.5);
 }
+
 #clickme {
     position: absolute;
     top: 70px;
     margin-left: 280px;
 }
 
-#cake, #candles {
+#cake, #candles, #layer_middle, #layer_bottom {
     position: absolute;
 }
 
@@ -41,20 +42,9 @@ body {
     margin: 170px 0 20px;
 }
 
-#candle_1 {
-    top: -20px;
-    left: 60px;
-}
-
-#candle_2 {
-    top: -250px;
-    left: 80px;
-}
-
-#candle_3 {
-    top: -480px;
-    left: 100px;
-}
+#candle_1 { top: -20px; left: 60px; }
+#candle_2 { top: -250px; left: 80px; }
+#candle_3 { top: -480px; left: 100px; }
 
 #flame_1, #flame_2, #flame_3 {
     position: absolute;
@@ -86,21 +76,9 @@ body {
     background: radial-gradient(50% 40px at 50% 40px, #0003 99.99%, #0000 0),#7B3F00;
 }
 
-#layer_top {
-    margin-top: 180px;
-}
-
-#layer_middle {
-    position: absolute;
-    top: 218px;
-    z-index: -1;
-}
-
-#layer_bottom {
-    position: absolute;
-    top: 257px;
-    z-index: -2;
-}
+#layer_top { margin-top: 180px; }
+#layer_middle { top: 218px; z-index: -1; }
+#layer_bottom { top: 257px; z-index: -2; }
 
 #top, #bottom {
     position: absolute;
@@ -113,12 +91,10 @@ body {
     background-color: #f5f5f5;
     z-index: -1;
     border: solid 4px #000;
-    border-top: solid 1px #ffffff;
+    border-top: solid 1px #fff;
 }
 
-#top {
-    transition: transform .8s ease-in-out;
-}
+#top { transition: transform .8s ease-in-out; }
 
 #text, #inputwish, #makeit {
     position: absolute;
@@ -126,20 +102,9 @@ body {
     display: none;
 }
 
-#text {
-    top: 380px;
-    margin-left: -120px;
-}
-
-#inputwish {
-    top: 685px;
-    margin-left: -90px;
-}
-
-#makeit {
-    top: 720px;
-    margin-left: -60px;
-}
+#text { top: 380px; margin-left: -120px; }
+#inputwish { top: 685px; margin-left: -90px; }
+#makeit { top: 720px; margin-left: -60px; }
 
 .container {
     display: flex;
