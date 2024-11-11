@@ -1,0 +1,114 @@
+body {
+    background-color: #ffd1a8;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(.75);
+}
+
+#text_1, #clickme {
+    transform: scale(1.5);
+}
+
+#clickme {
+    position: absolute;
+    top: 70px;
+    margin-left: 280px;
+}
+
+#cake, #candles, #layer_middle, #layer_bottom {
+    position: absolute;
+}
+
+#cake {
+    top: -90px;
+    left: 50%;
+    margin-left: -80px;
+}
+
+#candles {
+    top: 15px;
+}
+
+#candle_1, #candle_2, #candle_3 {
+    transform: scale(.956);
+    position: relative;
+    height: 60px;
+    width: 10px;
+    background: #ff6347;
+    border-radius: 10px / 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 170px 0 20px;
+}
+
+#candle_1 { top: -20px; left: 60px; }
+#candle_2 { top: -250px; left: 80px; }
+#candle_3 { top: -480px; left: 100px; }
+
+#flame_1, #flame_2, #flame_3 {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    height: 30px;
+    width: 10px;
+    background: radial-gradient(circle at 50% 100%, rgba(255, 165, 0, 0.8), rgba(255, 69, 0, 0.6), rgba(255, 0, 0, 0.4));
+    border-radius: 50%;
+    transform: translateX(-50%);
+    filter: blur(2px);
+}
+
+#flame-inner_1, #flame-inner_2, #flame-inner_3 {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    height: 10px;
+    width: 10px;
+    background: radial-gradient(circle at 50% 100%, rgba(255, 255, 0, 0.8), rgba(255, 140, 0, 0.6), rgba(255, 69, 0, 0.4));
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+#layer_top, #layer_middle, #layer_bottom {
+    height: 110px;
+    width: 175px;
+    border-radius: 100% / 80px;
+    background: radial-gradient(50% 40px at 50% 40px, #0003 99.99%, #0000 0),#7B3F00;
+}
+
+#layer_top { margin-top: 180px; }
+#layer_middle { top: 218px; z-index: -1; }
+#layer_bottom { top: 257px; z-index: -2; }
+
+#top, #bottom {
+    position: absolute;
+    top: 550px;
+    left: 50%;
+    margin-left: -145px;
+    height: 145px;
+    width: 230px;
+    padding: 30px;
+    background-color: #f5f5f5;
+    z-index: -1;
+    border: solid 4px #000;
+    border-top: solid 1px #fff;
+}
+
+#top { transition: transform .8s ease-in-out; }
+
+#text, #inputwish, #makeit {
+    position: absolute;
+    left: 50%;
+    display: none;
+}
+
+#text { top: 380px; margin-left: -120px; }
+#inputwish { top: 685px; margin-left: -90px; }
+#makeit { top: 720px; margin-left: -60px; }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transform: translateX(70px);
+}

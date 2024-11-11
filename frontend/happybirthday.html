@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="happybirthday.css">
+        <script src="happybirthday.js"></script>
+        <title>Happy Birthday</title>
+    </head>
+    <body>
+        <p id="text_1"><b>HAPPY BIRTHDAY</b></p>
+        <div id="cake">
+            <div id="candles">
+                <div id="candle_1">
+                    <div id="flame_1">
+                        <div id="flame-inner_1"></div>
+                    </div>
+                </div>
+                <div id="candle_2">
+                    <div id="flame_2">
+                        <div id="flame-inner_2"></div>
+                    </div>
+                </div>
+                <div id="candle_3">
+                    <div id="flame_3">
+                        <div id="flame-inner_3"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="layer">
+                <div id="layer_top"></div>
+                <div id="layer_middle"></div>
+                <div id="layer_bottom"></div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- <input id="inputname" type="text" placeholder="Put your name (Optional)">
+            <input id="inputage" type="number" placeholder="Put your age (Optional)" min="1"> -->
+        </div>
+        <button id="clickme" type="button" onclick="rotateDiv()">Click me</button>
+        <div id="card">
+            <div id="top"></div>
+                <p id="text"></p>
+            <div id="bottom"></div>
+            <input id="inputwish" type="text" placeholder="Make a wish...">
+            <button id="makeit" type="button" onclick="changetext()" disabled>Make it come true</button>
+        </div>
+    </body>
+</html>
