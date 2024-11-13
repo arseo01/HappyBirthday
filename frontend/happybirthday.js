@@ -42,7 +42,7 @@ async function changetext() {
 }
 
 async function createWish(name, wish, mosha) {
-    const url = `https://localhost:7294/api/Wish/MakeAWish`;
+    const url = `https://happybirthday-7gnr.onrender.com`;
     const wishData = {
         Name: name || "",
         Wish: wish,
