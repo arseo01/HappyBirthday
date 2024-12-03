@@ -5,20 +5,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// CORS Configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("localhostDevelopment", policy =>
     {
-        // Add all the origins where the frontend is hosted
         policy.WithOrigins(
-            "http://127.0.0.1:5500",  // Local development
-            "https://arseo01.github.io",  // GitHub pages frontend
-            "http://127.0.0.1:5501",  // Local dev for other environment
-            "https://celebratebirthday.github.io"  // GitHub pages frontend
+            "http://127.0.0.1:5500",
+            "https://arseo01.github.io",
+            "http://127.0.0.1:5501",
+            "https://celebratebirthday.github.io"
         )
-        .AllowAnyHeader()  // Allow all headers
-        .AllowAnyMethod();  // Allow all HTTP methods (GET, POST, etc.)
+        .AllowAnyHeader()
+        .AllowAnyMethod();
     });
 });
 
