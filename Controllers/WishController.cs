@@ -15,7 +15,7 @@ namespace backend.Controllers
     [ApiController]
     public class WishController : ControllerBase
     {
-        private readonly string _connectionString = "Server=mysql-birthday.alwaysdata.net;Port=3306;Database=birthday_app;User Id=root;Password=8mKPNN2jQcVG&UjVdMvw&15UPQXz4XTZ;";
+        private readonly string _connectionString = "Server=mysql-birthday.alwaysdata.net;Port=3306;Database=birthdayapp;User Id=ArseoAzemaj;Password=8mKPNN2jQcVG&UjVdMvw&15UPQXz4XTZ;";
 
         [HttpPost("MakeAWish")]
         public async Task<IActionResult> MakeAWish([FromBody] WishModel wish)
