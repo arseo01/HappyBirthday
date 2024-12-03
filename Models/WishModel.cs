@@ -4,7 +4,7 @@
     {
         public string? Name { get; set; }
         public required string Wish { get; set; }
-        public int? Mosha { get; set; }
+        public byte? Mosha { get; set; }
         public DateTime Viti { get; set; }
     }
 }
