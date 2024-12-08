@@ -15,7 +15,7 @@ namespace backend.Controllers
     [ApiController]
     public class WishController : ControllerBase
     {
-        private readonly string _connectionString = "Server=mysql-birthday.alwaysdata.net;Port=3306;Database=birthdayapp;User Id=ArseoAzemaj;Password=8mKPNN2jQcVG&UjVdMvw&15UPQXz4XTZ;";
+        private readonly string _connectionString = "Server=mysql-birthday.alwaysdata.net;Port=3306; Database=birthdayapp; User=birthday; Password=8mKPNN2jQcVG&UjVdMvw&15UPQXz4XTZ;";
 
         [HttpPost("MakeAWish")]
         public async Task<IActionResult> MakeAWish([FromBody] WishModel wish)
@@ -34,16 +34,14 @@ namespace backend.Controllers
                     // Insert the wish into the database
                     string sql = "INSERT INTO Wishes (Name, Wish, Mosha, Viti) VALUES (@Name, @Wish, @Mosha, @Viti)";
 
-                    using (var cmd = new MySqlCommand(sql, conn))
-                    {
-                        // Add parameters to prevent SQL injection
-                        cmd.Parameters.AddWithValue("@Name", wish.Name ?? (object)DBNull.Value); // If name is null, insert NULL
-                        cmd.Parameters.AddWithValue("@Wish", wish.Wish); //Not Nullable
-                        cmd.Parameters.AddWithValue("@Mosha", wish.Mosha ?? (object)DBNull.Value); // If Mosha is null, insert NULL
-                        cmd.Parameters.AddWithValue("@Viti", DateTime.Now); // Never NULL, Automatically set Viti to the current date
+                    using var cmd = new MySqlCommand(sql, conn);
+                    // Add parameters to prevent SQL injection
+                    cmd.Parameters.AddWithValue("@Name", wish.Name ?? (object)DBNull.Value); // If name is null, insert NULL
+                    cmd.Parameters.AddWithValue("@Wish", wish.Wish); //Not Nullable
+                    cmd.Parameters.AddWithValue("@Mosha", wish.Mosha ?? (object)DBNull.Value); // If Mosha is null, insert NULL
+                    cmd.Parameters.AddWithValue("@Viti", DateTime.Now); // Never NULL, Automatically set Viti to the current date
 
-                        await cmd.ExecuteNonQueryAsync();
-                    }
+                    await cmd.ExecuteNonQueryAsync();
                 }
 
                 return Ok("Your wish has been saved!");
