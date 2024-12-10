@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy the backend project file to the container
-COPY ["HappyBirthDay/backend/backend.csproj", "backend/"]
+COPY HappyBirthDay/backend/backend.csproj backend/
 
 # Restore the project's dependencies
 RUN dotnet restore "backend/backend.csproj"
