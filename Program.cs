@@ -1,36 +1,35 @@
-using backend.Controllers;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// CORS Configuration
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("localhostDevelopment", policy =>
-    {
-        policy.WithOrigins(
-            "http://127.0.0.1:5501", // Local dev environment
-            "https://celebratebirthday.github.io" // GitHub Pages frontend
-        )
-        .AllowAnyHeader()
-        .AllowAnyMethod();
-    });
+    options.AddPolicy(name: "localhostDevelopment",
+                      policy =>
+                      {
+                          policy.WithOrigins("http://127.0.0.1:5500", "https://arseo01.github.io", "http://127.0.0.1:5501", "https://celebratebirthday.github.io")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                      });
 });
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseSwagger();
-app.UseSwaggerUI();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-// Commented out HTTPS redirection for Render compatibility
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
-app.UseCors("localhostDevelopment"); // Apply the CORS policy
+app.UseCors("localhostDevelopment");
 
 app.UseAuthorization();
 

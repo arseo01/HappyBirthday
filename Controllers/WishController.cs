@@ -15,7 +15,7 @@ namespace backend.Controllers
     [ApiController]
     public class WishController : ControllerBase
     {
-        private readonly string _connectionString = "Server=mysql-birthday.alwaysdata.net;Port=3306; Database=birthdayapp; User=birthday; Password=8mKPNN2jQcVG&UjVdMvw&15UPQXz4XTZ;";
+        private readonly string _connectionString = "Server=127.0.0.1;Port=3306; Database=birthdayapp; uid=root; pwd=8mKPNN2jQcVG&UjVdMvw&15UPQXz4XTZ;";
 
         [HttpPost("MakeAWish")]
         public async Task<IActionResult> MakeAWish([FromBody] WishModel wish)
@@ -52,32 +52,5 @@ namespace backend.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-
-        //class Program
-        //{
-        //    static void Main()
-        //    {
-        //        string connstring = "Server=mysql-birthday.alwaysdata.net;Port=3306;Database=birthday_app;User Id=alban1angh057;Password=\"8mKPNN2jQcVG&UjVdMvw&15UPQXz4XTZ\"";
-
-        //        MySqlConnection conn = new MySqlConnection(connstring);
-
-        //        try
-        //        {
-        //            // Open the connection to the database
-        //            conn.Open();
-        //            Console.WriteLine("Connection to the database was successful.");
-        //        }
-        //        catch (MySqlException ex)
-        //        {
-        //            // Handle any errors that occur during the connection
-        //            Console.WriteLine($"Error: {ex.Message}");
-        //        }
-        //        finally
-        //        {
-        //            // Close the connection
-        //            conn.Close();
-        //        }
-        //    }
-        //}
     }
 }
