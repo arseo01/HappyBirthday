@@ -1,36 +1,30 @@
-# Use the official .NET SDK image to build the application
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+# See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-# Set the build configuration to Release by default
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-
-# Copy the csproj file and restore the dependencies
-COPY ["backend.csproj", "./"]
-
-# Restore the dependencies
-RUN dotnet restore "./backend.csproj"
-
-# Copy the rest of the source code into the container
-COPY . .
-
-# Build the project in Release configuration
-RUN dotnet build "./backend.csproj" -c $BUILD_CONFIGURATION -o /app/build
-
-# Publish the application to the /app/publish folder
-FROM build AS publish
-RUN dotnet publish "./backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-# Use the official .NET runtime image for the final production container
+# This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER $APP_UID
 WORKDIR /app
-
-# Expose the ports that your app will run on
 EXPOSE 8080
 EXPOSE 8081
 
-# Copy the published application from the build stage
-COPY --from=publish /app/publish .
 
-# Set the entry point for the application
+# This stage is used to build the service project
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["backend.csproj", "."]
+RUN dotnet restore "./backend.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "./backend.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+# This stage is used to publish the service project to be copied to the final stage
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./backend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "backend.dll"]
